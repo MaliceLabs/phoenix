@@ -1,4 +1,5 @@
 {
+	"private": true,
 	"license": "AGPLv3",
 	"bugs": {
 		"url": "https://github.com/FurAffinity/phoenix/issues",
