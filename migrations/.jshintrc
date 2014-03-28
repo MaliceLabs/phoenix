@@ -1,0 +1,19 @@
+{
+	"camelcase": true,
+	"curly": true,
+	"eqeqeq": true,
+	"eqnull": true,
+	"forin": true,
+	"immed": true,
+	"indent": 1,
+	"latedef": "nofunc",
+	"multistr": true,
+	"newcap": true,
+	"node": true,
+	"nonew": true,
+	"strict": true,
+	"trailing": true,
+	"undef": true,
+	"unused": true,
+	"white": true
+}
