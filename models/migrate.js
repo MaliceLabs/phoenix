@@ -39,18 +39,18 @@ function upgradeTo(revision, current, finalDestination) {
 		return Promise.from();
 	}
 
-	var m = require(path.join('../migrations', current + '.js'));
+	var migration = require(path.join('../migrations', current + '.js'));
 
-	if (revision !== null && m.base === null) {
+	if (revision !== null && migration.base === null) {
 		throw new Error('Can’t find an upgrade path from ' + revision + ' to ' + finalDestination + '.');
 	}
 
-	return upgradeTo(revision, m.base, finalDestination)
+	return upgradeTo(revision, migration.base, finalDestination)
 		.then(function () {
-			console.log('Upgrading from %s to %s.', m.base, current);
+			console.log('Upgrading from %s to %s.', migration.base, current);
 		})
 		.then(query('BEGIN'))
-		.then(wrap(m.up, current));
+		.then(wrap(migration.up, current));
 }
 
 function destinationRevision() {
