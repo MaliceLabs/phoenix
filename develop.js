@@ -48,13 +48,23 @@ function TreeWatcher(directory) {
 
 util.inherits(TreeWatcher, events.EventEmitter);
 
+function awaitableExit(child) {
+	child.exit = new Promise(function (resolve) {
+		child.on('exit', function () {
+			resolve();
+		});
+	});
+
+	return child;
+}
+
 function SingleProcess() {
 	this.last = Promise.resolve();
 }
 
 SingleProcess.prototype.spawn = function spawn(path, args, options) {
 	return (this.last = this.kill('SIGINT').then(function () {
-		return childProcess.spawn(path, args, options);
+		return awaitableExit(childProcess.spawn(path, args, options));
 	}));
 };
 
@@ -64,25 +74,26 @@ SingleProcess.prototype.kill = function kill(signal) {
 			return Promise.resolve();
 		}
 
-		return new Promise(function (resolve) {
-			previous.on('exit', function () {
-				resolve();
-			});
+		previous.kill(signal);
 
-			previous.kill(signal);
-		});
+		return previous.exit;
 	}));
 };
 
 function limit(func, timeout) {
 	var lastCall = 0;
+	var timer = null;
 
-	return function () {
+	return function limited() {
 		var now = Date.now();
 
 		if (now - lastCall >= timeout) {
 			lastCall = now;
+			clearTimeout(timer);
+			timer = null;
 			func.apply(this, arguments);
+		} else if (!timer) {
+			timer = setTimeout(limited, timeout - (now - lastCall));
 		}
 	};
 }
