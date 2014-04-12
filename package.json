@@ -8,9 +8,11 @@
 	"dependencies": {
 		"promise": "~4.0.0",
 		"pg": "~2.11.1",
+		"redis": "~0.10.1",
 		"busboy": "~0.2.3",
 		"express": "~4.0.0",
-		"razorleaf": "~2.0.10-1"
+		"razorleaf": "~2.1.1-1",
+		"lodash": "~2.4.1"
 	},
 	"engines": {
 		"node": ">=0.10.26"
