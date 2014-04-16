@@ -30,7 +30,7 @@ function TreeWatcher(directory) {
 
 	fs.readdir(directory, function (error, names) {
 		if (error) {
-			if (error.errno !== ENOTDIR) {
+			if (error.message.indexOf('ENOTDIR') === -1) {
 				treeWatcher.emit('error', error);
 			}
 
