@@ -36,7 +36,7 @@ function wrap(transform, targetRevision) {
 
 function upgradeTo(revision, current, finalDestination) {
 	if (revision === current) {
-		return Promise.from();
+		return Promise.resolve();
 	}
 
 	var migration = require(path.join('../migrations', current + '.js'));
@@ -55,7 +55,7 @@ function upgradeTo(revision, current, finalDestination) {
 
 function destinationRevision() {
 	if (process.argv.length >= 3) {
-		return Promise.from(process.argv[2]);
+		return Promise.resolve(process.argv[2]);
 	}
 
 	return readFile('migrations/current', 'utf8').then(function (name) {

@@ -5,7 +5,7 @@ var Promise = require('promise');
 module.exports.base = null;
 
 module.exports.up = function (query) {
-	return Promise.from()
+	return Promise.resolve()
 		.then(query(
 			"CREATE TYPE rating AS ENUM('general', 'mature', 'adult')"
 		))
@@ -37,7 +37,7 @@ module.exports.up = function (query) {
 };
 
 module.exports.down = function (query) {
-	return Promise.from()
+	return Promise.resolve()
 		.then(query("DROP TABLE submissions"))
 		.then(query("DROP TABLE users"))
 		.then(query("DROP TYPE rating"));
