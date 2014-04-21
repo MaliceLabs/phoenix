@@ -1,3 +1,4 @@
 {
+	"sessionKey": null,
 	"database": "postgresql://fa@localhost/fa"
 }
