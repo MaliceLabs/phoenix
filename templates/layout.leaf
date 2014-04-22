@@ -1,0 +1,33 @@
+% function csrf()
+	input
+		type: "hidden"
+		name: "token"
+		value: "#{data.token}"
+
+doctype
+
+html
+	head
+		meta charset: "utf-8"
+
+		meta name: "viewport" content: "initial-scale=1"
+
+		title
+			block title
+			" – Fur Affinity"
+
+		block stylesheets
+
+	body
+		header id: "header"
+			h1 id: "title"
+				"Fur Affinity"
+
+			ul id: "notifications"
+				% var notifications = data.notifications;
+				li a "#{notifications.submissions} submission#{s(notifications.submissions)}" href: "/notifications/#submissions"
+
+		main id: "main"
+			block content
+
+		footer id: "footer"

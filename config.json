@@ -1,4 +1,12 @@
 {
-	"sessionKey": null,
+	"session": {
+		"key": null,
+		"guestMaxAge": "90 minutes",
+		"userMaxAge": "3 months"
+	},
+	"maximumFormSize": "1 MiB",
+	"password": {
+		"bcryptRounds": 12
+	},
 	"database": "postgresql://fa@localhost/fa"
 }

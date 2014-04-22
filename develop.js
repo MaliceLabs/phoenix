@@ -1,7 +1,5 @@
 'use strict';
 
-var ENOTDIR = -20;
-
 var fs = require('fs');
 var path = require('path');
 var util = require('util');
@@ -128,8 +126,8 @@ function beginWatching() {
 function main() {
 	var config = require('./config');
 
-	if (!config.sessionKey) {
-		console.error('No sessionKey has been provided in config.json; you’ll need one to sign session IDs.');
+	if (!config.session.key) {
+		console.error('No session.key has been provided in config.json; you’ll need one to sign session IDs.');
 
 		require('crypto').randomBytes(64, function (error, bytes) {
 			if (error) {

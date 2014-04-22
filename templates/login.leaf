@@ -1,0 +1,55 @@
+extends layout
+
+replace title "Log In"
+
+replace content
+	% var username = data.username;
+	% var failureType = data.failureType;
+	% var returnTo = data.returnTo;
+	% var focusUsername = !username;
+
+	form method: "POST"
+		% csrf();
+
+		if failureType
+			p class: "error login-failure"
+				strong "Sorry; wrong #{failureType}. Double-check it!"
+
+			if failureType === 'username'
+				% focusUsername = true;
+
+		if returnTo
+			input
+				type: "hidden"
+				name: "return_to"
+				value: "#{returnTo}"
+
+		" " label
+			"Username: "
+
+			input
+				type: "text"
+				name: "username"
+				accesskey: "u"
+				#maxlength: "40"
+
+				if username
+					value: "#{username}"
+
+				if focusUsername
+					autofocus:
+
+		" " label
+			"Password: "
+
+			input
+				type: "password"
+				name: "password"
+				accesskey: "p"
+				maxlength: "1024"
+				value: ""
+
+				if !focusUsername
+					autofocus:
+
+		" " button "Log in"

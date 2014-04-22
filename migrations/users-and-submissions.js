@@ -13,9 +13,8 @@ module.exports.up = function (query) {
 			"CREATE TABLE users(\
 				id SERIAL PRIMARY KEY,\
 				username VARCHAR NOT NULL UNIQUE,\
-				password_hash BYTEA NOT NULL,\
-				password_hash_rounds INTEGER NOT NULL DEFAULT 0,\
-				registered TIMESTAMP WITH TIME ZONE NOT NULL,\
+				password_hash VARCHAR(60) NOT NULL,\
+				registered TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT (NOW() AT TIME ZONE 'UTC'),\
 				full_name VARCHAR NOT NULL DEFAULT '',\
 				artist_type VARCHAR NOT NULL DEFAULT '',\
 				current_mood VARCHAR NOT NULL DEFAULT '',\

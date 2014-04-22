@@ -1,0 +1,3 @@
+extends layout
+
+replace title "Home"
