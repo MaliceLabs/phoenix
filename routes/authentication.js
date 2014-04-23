@@ -10,4 +10,7 @@ router.route('/login')
 	.get(promiseResponse.html(authentication.loginForm))
 	.post(promiseResponse.html(authentication.login));
 
+router.route('/logout')
+	.post(promiseResponse.html(authentication.logout));
+
 module.exports = router;

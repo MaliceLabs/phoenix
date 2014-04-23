@@ -20,6 +20,27 @@ html
 
 	body
 		header id: "header"
+			nav id: "navigation"
+				ul id: "main-navigation"
+					li a "Browse" href: "/submissions/"
+					li a "Search" href: "/submissions/search"
+					li a "Submit" href: "/submissions/new"
+					li a "Community" href: "#" # TODO
+					li a "Support" href: "#" # TODO
+
+				ul id: "user-navigation"
+					if data.userId
+						li a "~#{data.username}" href: "/users/#{data.username}/"
+
+						li form
+							method: "POST"
+							action: "/logout"
+
+							% csrf();
+							button "Log Out"
+					else
+						li a "Log In" href: "/login"
+
 			h1 id: "title"
 				"Fur Affinity"
 

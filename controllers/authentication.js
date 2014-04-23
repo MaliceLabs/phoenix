@@ -23,5 +23,20 @@ function login(request, response) {
 	});
 }
 
+function logout(request, response) {
+	return formSession.formData(request).then(function () {
+		var redirect = new Redirect('/', Redirect.SEE_OTHER);
+
+		if (!request.userId) {
+			return redirect;
+		}
+
+		return formSession.createNewSession(response).then(function () {
+			return redirect;
+		});
+	});
+}
+
 module.exports.loginForm = loginForm;
 module.exports.login = rateLimit.byAddress(30, '10 minutes', login, 'login');
+module.exports.logout = logout;
