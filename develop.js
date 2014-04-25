@@ -142,6 +142,9 @@ function main() {
 		return;
 	}
 
+	var host = process.env.HOST || 'localhost';
+	var port = process.env.PORT || 3000;
+	console.log("Starting development server on http://" + host + ":" + port + "/");
 	beginWatching();
 }
 
