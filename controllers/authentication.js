@@ -31,14 +31,17 @@ function logout(request, response) {
 	return formSession.formData(request).then(function () {
 		var redirect = new Redirect('/', Redirect.SEE_OTHER);
 
-		if (!request.user) {
+		if (!request.user.id) {
 			return redirect;
 		}
 
-		// TODO: Remove session row
-		return formSession.createNewSession(response).then(function () {
-			return redirect;
-		});
+		return formSession.removeSession(request.sessionId)
+			.then(function () {
+				return formSession.createNewSession(response);
+			})
+			.then(function () {
+				return redirect;
+			});
 	});
 }
 
