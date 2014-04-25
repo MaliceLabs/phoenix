@@ -61,3 +61,12 @@ html
 			block content
 
 		footer id: "footer"
+			ul id: "footer-navigation"
+				li a "Advertising" href: "/advertising"
+				li a "Twitter" href: "https://twitter.com/furaffinity"
+				li a "Facebook" href: "https://www.facebook.com/furaffinity"
+				li a "Terms of Service" href: "/support/terms"
+				li a "Submission Agreement" href: "/support/submission-agreement"
+				li a "Acceptable Upload Policy" href: "/support/acceptable-upload-policy"
+
+			p "Fur Affinity is © 2005–2014 Ferrox Art LLC"
