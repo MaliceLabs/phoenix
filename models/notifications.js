@@ -8,11 +8,15 @@ function toInteger(obj) {
 	return obj | 0;
 }
 
-var keys = ['submissions'];
+var keys = ['submissions', 'comments', 'journals', 'streams', 'watches', 'notes'];
 
-function counts() {
+function counts(request) {
+	if (!request.user.id) {
+		return Promise.resolve(null);
+	}
+
 	return new Promise(function (resolve, reject) {
-		redis.hmget('notifications:username', keys, function (error, values) {
+		redis.hmget('notifications:' + request.user.id, keys, function (error, values) {
 			if (error) {
 				reject(error);
 				return;

@@ -13,7 +13,11 @@ function login(request, response) {
 	return formSession.formData(request).then(function (form) {
 		return users.authenticate(form).then(function (result) {
 			if (!result.userId) {
-				return loginForm.with({ failureType: result.failureType, username: form.username })(request);
+				return loginForm.with({
+					failureType: result.failureType,
+					username: form.username,
+					returnTo: form.return_to,
+				})(request);
 			}
 
 			return formSession.createUserSession(result.userId, response).then(function () {
@@ -27,16 +31,17 @@ function logout(request, response) {
 	return formSession.formData(request).then(function () {
 		var redirect = new Redirect('/', Redirect.SEE_OTHER);
 
-		if (!request.userId) {
+		if (!request.user) {
 			return redirect;
 		}
 
+		// TODO: Remove session row
 		return formSession.createNewSession(response).then(function () {
 			return redirect;
 		});
 	});
 }
 
-module.exports.loginForm = loginForm;
-module.exports.login = rateLimit.byAddress(30, '10 minutes', login, 'login');
-module.exports.logout = logout;
+exports.loginForm = loginForm;
+exports.login = rateLimit.byAddress(30, '10 minutes', login, 'login');
+exports.logout = logout;

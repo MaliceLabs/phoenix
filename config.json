@@ -8,5 +8,6 @@
 	"password": {
 		"bcryptRounds": 12
 	},
-	"database": "postgresql://fa@localhost/fa"
+	"database": "postgresql://fa@localhost/fa",
+	"temporaryDirectory": "tmp/"
 }

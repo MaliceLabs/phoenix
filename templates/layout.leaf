@@ -28,9 +28,11 @@ html
 					li a "Community" href: "#" # TODO
 					li a "Support" href: "#" # TODO
 
+				% var user = data.user;
+
 				ul id: "user-navigation"
-					if data.userId
-						li a "~#{data.username}" href: "/users/#{data.username}/"
+					if user.id
+						li a "~#{user.username}" href: "/users/#{user.username}/"
 
 						li form
 							method: "POST"
@@ -44,9 +46,16 @@ html
 			h1 id: "title"
 				"Fur Affinity"
 
-			ul id: "notifications"
+			if data.notifications
 				% var notifications = data.notifications;
-				li a "#{notifications.submissions} submission#{s(notifications.submissions)}" href: "/notifications/#submissions"
+
+				ul id: "notifications"
+					li a "#{notifications.submissions} submission#{s(notifications.submissions)}" href: "/notifications/#submissions"
+					li a "#{notifications.comments} comment#{s(notifications.comments)}" href: "/notifications/#comments"
+					li a "#{notifications.journals} journal#{s(notifications.journals)}" href: "/notifications/#journals"
+					li a "#{notifications.streams} stream#{s(notifications.streams)}" href: "/notifications/#streams"
+					li a "#{notifications.watches} watch#{s(notifications.watches, 'es')}" href: "/notifications/#watches"
+					li a "#{notifications.notes} note#{s(notifications.notes)}" href: "/notifications/#notes"
 
 		main id: "main"
 			block content

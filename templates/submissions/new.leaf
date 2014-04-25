@@ -1,0 +1,17 @@
+extends layout
+
+replace title "Share new submission"
+
+replace content
+	form method: "POST" action: "/submissions/" enctype: "multipart/form-data"
+		% csrf();
+
+		" " label
+			"Media to upload: "
+
+			input
+				type: "file"
+				name: "file"
+				multiple:
+
+		" " button "Create submission"

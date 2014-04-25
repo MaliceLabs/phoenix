@@ -1,6 +1,7 @@
 'use strict';
 
 var Promise = require('promise');
+var util = require('util');
 var assert = require('assert');
 var db = require('../lib/db');
 var bcrypt = require('bcrypt');
@@ -9,6 +10,35 @@ var config = require('../config');
 var bcryptRounds = config.password.bcryptRounds;
 
 assert((bcryptRounds | 0) === bcryptRounds, 'password.bcryptRounds should be an integer');
+
+function Privileged() {
+}
+
+Privileged.prototype.ensure = function (privilege) {
+	var methodName = 'ensureCan' + privilege.charAt(0).toUpperCase() + privilege.substring(1);
+
+	if (methodName in this) {
+		return this[methodName]();
+	}
+
+	return Promise.reject();
+};
+
+function User(id, username) {
+	this.id = id;
+	this.username = username;
+}
+
+util.inherits(User, Privileged);
+
+User.prototype.ensureCanSubmit = function () {
+	return Promise.resolve();
+};
+
+function Guest() {
+}
+
+util.inherits(Guest, Privileged);
 
 function authenticate(credentials) {
 	var username = credentials.username;
@@ -67,5 +97,20 @@ function create(credentials) {
 	});
 }
 
+function ensure(privilege) {
+	return function ensuresPrivilege(request) {
+		return request.user.ensure(privilege).catch(function () {
+			var error = new Error('Access requires ' + privilege + ' privilege.');
+			error.statusCode = 403;
+
+			return Promise.reject(error);
+		});
+	};
+}
+
+module.exports.Privileged = Privileged;
+module.exports.User = User;
+module.exports.Guest = Guest;
 module.exports.authenticate = authenticate;
 module.exports.create = create;
+module.exports.ensure = ensure;
