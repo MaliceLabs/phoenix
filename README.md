@@ -14,12 +14,24 @@ redesign of code, user interface, and database.
 
 ## Configuration
 
-`config.json` contains the configuration. It includes:
+`config.json` contains the application configuration. It includes:
 
  - `database`, the PostgreSQL connection string
- - `passwordHash`
-   - `rounds`, the number of rounds of PBKDF2 to be applied to passwords
-   - `saltLength`, the number of bytes of salt to use in password hashing
+ - `password`
+   - `bcryptRounds`, the base-2 logarithm of the number of rounds of bcrypt
+     to be applied to passwords
+
+`sample/` contains sample Nginx configuration. You can get started quickly
+with its Makefile:
+
+```shell
+$ make -C sample/
+⋮
+$ sudo make -C sample/ install NGINX_CONF_DIR=/path/to/nginx/conf/
+```
+
+Then import your new development CA from `sample/ca.crt`, start Nginx,
+and visit <https://local.furaffinity.net/>!
 
 
 ## Running the server
