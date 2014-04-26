@@ -7,10 +7,10 @@
 	},
 	"dependencies": {
 		"promise": "~4.0.0",
-		"pg": "~2.11.1",
+		"pg": "~3.0.3",
 		"redis": "~0.10.1",
 		"busboy": "~0.2.5",
-		"express": "~4.0.0",
+		"express": "~4.1.0",
 		"cookie-parser": "~1.0.1",
 		"razorleaf": "~2.1.2",
 		"lodash": "~2.4.1",
