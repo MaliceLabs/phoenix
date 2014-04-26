@@ -1,7 +1,5 @@
 'use strict';
 
-var fs = require('fs');
-
 function render(template, variables) {
 	return template.replace(/{{\s*(.+?)\s*}}/g, function (_, name) {
 		return variables[name];
