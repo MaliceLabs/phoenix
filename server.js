@@ -2,7 +2,10 @@
 
 var app = require('./application');
 
-var server = app.listen(3000, '::1');
+var server = app.listen(
+	process.env.PORT || 3000,
+	process.env.HOST || '::1'
+);
 
 process.once('SIGINT', function () {
 	server.close(function () {
