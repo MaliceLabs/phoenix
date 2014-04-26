@@ -31,6 +31,7 @@ $ sudo make -C sample/ install NGINX_CONF_DIR=/path/to/nginx/conf/
 ```
 
 Then import your new development CA from `sample/ca.crt`, start Nginx,
+add an `/etc/hosts` (or equivalent) entry for `::1 local.furaffinity.net`,
 and visit <https://local.furaffinity.net/>!
 
 
