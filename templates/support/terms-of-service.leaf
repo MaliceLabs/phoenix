@@ -1,0 +1,120 @@
+extends layout
+
+replace title
+	"Terms of service"
+
+replace content
+	header
+		h1 "Terms Of Service (TOS)"
+
+		div
+			"Last updated "
+			date datetime: "2012-09-05T12:09Z"
+				"2012-09-05 12:09"
+
+	p "By registering on Fur Affinity (FA) you agree to abide by all policies of the site - the Terms of Service (TOS), Code of Conduct (COC), Submission Agreement (SA) and Acceptable Upload Policy (AUP). We reserve the right to change our polices at any time, without prior notice and for any reason. Continued usage of the site after modification of site policies constitutes acceptance and agreement with any stated changes."
+
+	p "If you have visited FA by accident and disagree with the site’s policies you agree to cease use of the site immediately."
+
+	p "FA is not responsible for, nor endorses, the expressions, comments, journals or content uploaded by its users. In short: if you experience trauma looking at the content of this site it's not our fault. You agree to take full responsibility for any and all comments and actions made while using the site, and that you will behave in a respectful manner to the community, our users and the site staff."
+
+	p "By using FA you agree that you will " em "NOT"
+		":"
+
+	ul
+		li "use the site for unlawful purposes"
+		li "submit material which is threatening, abusive or harmful; that violates others' privacy, that may be viewed as defamatory, libelous or illegal"
+		li "upload or submit content to which you do not have copyright, or that was not created explicitly for you"
+		li "harm minors in any way by violating child pornography laws, submitting depictions of minors engaged in sexual conduct or posting personally identifiable information about any child under the age of 13"
+		li "upload, post or transmit material which may cause harm to FA or its users. This includes viruses, worms, Trojans or other programs designed to damage, disrupt or allow unauthorized access to user accounts."
+		li "provide access to the site through third party sites or apps without written permission from the site owner."
+
+	h2 "Account Registration" id: "account-registration"
+
+	p "This site is not intended for use by individuals under the age of 13. Accounts created by underage individuals will be closed without warning, and it will be that individual's responsibility to provide verification they are of sufficient legal age to continue use of the site."
+
+	p "By registering an account on FA you agree to the following provisions:"
+
+	ul
+		li
+			strong "Adhere to the Rules"
+			" – You agree that you will read and adhere to the terms of the site - the Terms of Service, Code of Conduct, Submission Agreement and the Acceptable Upload Policy."
+		li
+			strong "Provide Accurate Information"
+			" – You agree that all information provided to the site during account registration is truthful and accurate. We reserve the right to terminate any account created with falsified information. You also agree to keep all information up-to-date to the best of your ability."
+		li
+			strong "Naming Convention"
+			" – You agree that that you will NOT give accounts names which are offensive, racist or bigoted in any way. Additionally, accounts may not contain crude or vulgar terminology. Accounts which violate the naming policy will be terminated without warning or prior notification."
+		li
+			strong "Transfer of Accounts"
+			" – If you wish to transfer your account to another user, please contact site staff via a Trouble Ticket to approve the transfer. User-to-user account transfers are not permitted."
+		li
+			strong "Sale of Accounts"
+			" – We do not permit the sale/re-sale of accounts. Your account is yours and yours alone. You may not provide access to your account to any individual other than the account's original rightful owner(s)."
+		li
+			strong "Secondary Accounts"
+			" – FA does not limit the amount of accounts a user may make so long as the accounts are used for legitimate purposes. Secondary accounts used for the sake of creating “account art” by using multiple icons are not permitted. Admin actions taken against any user’s account will carry over to any alternative accounts that user may have."
+		li
+			strong "Group Accounts"
+			" – Group accounts are permitted so long as they abide by site policies. Violations made by a group account may result in group closure. Additionally, further action will be taken against the account of the offending individual and/or group owner. It is the group owner's responsibility to provide access to the group accounts, and FA takes no responsibility for actions taken by anybody with access to shared accounts."
+		li
+			strong "Impersonation Accounts"
+			" – Accounts created to impersonate celebrities, political figures or any other real person(s) are prohibited, and will be shut down without warning."
+
+	h2 "Mature Content" id: "mature-content"
+
+	p "FA contains adult content. By joining the site, you agree that FA is not liable for the actions of minors lying to enable the ability to view mature art. We will do everything within our power to limit their ability to do so."
+
+	p "The ability to view adult artwork is disabled by default. By enabling the Mature flag, you agree that you are of legal age (18+) to view the material. Users found lying about their age to view mature artwork may have their aged locked or terminated without warning, depending on the account’s history."
+
+	p "We encourage parents and guardians to be familiar with the sites their children visit, and to take a part in their children’s lives. It is your role, as parent or guardian, to monitor and police your children and to take a proactive part in their lives."
+
+	h2 "Account Information & Security" id: "account-security"
+
+	p "We value your privacy, and are committed to safeguarding your personal information to the best of our ability. We will never use, share, sell or distribute personally identifiable information (birth date, e-mail address, ISP/IP or other aliases) except when such actions are necessary"
+
+	ul
+		li "to comply with law enforcement;"
+		li "to protect or defend our legal rights, property or interests;"
+		li "to investigate reports of illegal activities, fraud or situations involving potential risk or endangerment to the physical safety of our users."
+
+	p "You are solely responsible for maintaining the confidentiality of your account password, and accept all responsibility for any damages or loss resulting from willful negligence on your account security."
+
+	p "FA utilizes Viglink as an affiliate link system to help monetize the site. Viglink is anonymous tracker, and does not record personally identifying information. Users can opt out of Viglink by going to the Site Settings under Account Management, or by visiting "
+		a href: "http://www.viglink.com/optout" "http://www.viglink.com/optout"
+
+	h2 "Enforcement Policy" id: "enforcement-policy"
+
+	p "We will uphold our policies and actively protect the interests of the site and our members. This includes, but is not limited to stopping: art theft/tracing, identity theft or attempts at financial harm, personal harassment or organizing trolling, piracy or other illegal activity or any activity which we feel is a threat to the site or its community."
+
+	p "We are committed to fair and equal treatment. Suspected violations will be investigated before action is taken. Members are expected to follow requests or instructions by site staff. FA will only enforce its policies against actions made within the site's domain (read: if it doesn't happen on *.furaffinity.net it's not our problem)."
+
+	p "Users found in violation of site policies may have action taken against their account depending on the severity of the action at the admin's discretion. In reasonable violations, staff will provide a warning to the user. Action taken by the staff may involve removal of submissions, journals and comments or a temporary suspension. Repeat violations of the TOS will result in permanent suspension of your account."
+
+	h2 "Our Rights" id: "our-rights"
+
+	p "FA staff reserve the rights of the following:"
+
+	ul
+		li "to remove content (submissions, journals, comments, etc.) not in accordance with site policy;"
+		li "to modify submissions (editing will be limited to: adding/editing categories, keywords, ratings, comments or titles not in line with site policy);"
+		li "to monitor private data or user communication to investigate potential illegal activity by state, Federal or international law, protect the interests of the site or to prevent threats, spam or harassment"
+		li "to suspend or terminate accounts at any time and without notice."
+
+	p "Attempts to evade suspension, circumvent age lock, or otherwise bypass any limitation or admin action will result in permanent closure of all accounts owned by the affected user. FA is not responsible for loss of data/information or any financial complications or hardship which result from termination."
+
+	h2 "Network Availability" id: "network-availability"
+
+	p "FA does not promise or guarantee up-time of the site. Outages and maintenance (planned and unplanned) are unavoidable. When possible, FA will make every attempt to forewarn the community of planned downtime."
+
+	p "We are not responsible for losses (financial or otherwise) attributed to downtime."
+
+	h2 "Storage Policy" id: "storage-policy"
+
+	p "FA provides free online storage for art (visual, written or audible). FA is NOT a backup service, and is not responsible for long term archival of user data or loss of files. You are solely responsible for creating back-ups of your content. As such, we encourage users to keep regular backups and archives of their data using a service and/or storage media intended for that purpose."
+
+	p "We reserve the right to limit the amount of space available to users at any time and without prior notification."
+
+	h2 "Copyrights" id: "copyrights"
+
+	p "Artwork found on FA is copyright the original artist unless otherwise stated. The name FA, mascots (Fender and Rednef), website coding and graphics are sole property of FA and Ferrox Art LLC. You may not reproduce, distribute and/or display FA graphics or works without express permission."
