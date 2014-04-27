@@ -1,0 +1,117 @@
+extends layout
+
+replace title
+	"Acceptable upload policy"
+
+replace content
+	header
+		h1 "Acceptable Upload Policy (AUP)"
+
+		div
+			"Last updated "
+			date datetime: "2013-02-24T17:09Z"
+				"2013-02-24 17:09"
+
+	h2 "General Rules"
+
+	h3 "What we permit in your gallery:"
+
+	ul
+		li "Original Art (Music, Photography, Traditional Art, Digital Art, Writing)"
+
+
+	h3 "What we permit in scraps:"
+
+	ul
+		li "Incomplete art"
+		li "Similar art (re-colorings, different versions of the same thing)"
+		li "Personal photography/screenshots"
+
+
+	h3 "What we don’t permit:"
+
+	ul
+		li "All media" ul
+			li "which the uploader does not have the legal rights to post"
+			li "which was neither made directly by nor directly for the uploader"
+			li "which has been traced or plagiarized"
+			li "made to harass or demean others"
+			li "which, the user’s content aside, is of poor quality (examples: fuzzy audio, blurry/rotated photos, blocky images)"
+			li "lacking a meaningful amount of unique/original content"
+			li "depicting of minors (humanoid or feral adolescents who act/behave like humans) in sexual situations"
+			li "counting more than 6 in submissions of near-identical content or appearance"
+		li "Photography" ul
+			li "depicting sexual content (human or animal) or illegal activities"
+			li "containing indecently-clothed persons"
+			li "exposed genitalia, buttocks, or breasts"
+			li "not wearing shorts, pants, or swimwear"
+			li "containing real gore or death"
+		li "Audio" ul
+			li "containing sexual or obscene sounds unless part of a full/relevant animation (not including loops or slideshows)"
+
+	p "For anything not covered here, please consult an admin before uploading!"
+
+
+	h2 "Upload Process"
+
+	ul
+		li "Choose a correct/accurate rating."
+		li "Choose a thumbnail which…" ul
+			li "Accurately previews the submission"
+			li "Also follows the AUP"
+		li "Choose a folder which is appropriate for the content (published/unpublished)."
+		li "Choose tags which accurately describe the submission."
+		li "In the submission description and comments, refrain from linking to mature/adult content which no one would be permitted to upload under the site policies."
+
+
+	h2 "Sample Interpretations/Exemptions"
+
+	h3 "All Submissions"
+
+	ul
+		li "Permitted in your Gallery" ul
+			li "Different versions of the same submission are permitted, but only one copy of one version may appear in published folders.	Excessive numbers of variation submissions, published or not, are not permitted."
+			li "Derivative works (music remixes, photo morphs) are permitted only if the finished work is uniquely distinguishable from its borrowed parts.  Additionally, ownership aside, the original parts must abide by the AUP."
+			li "Submissions depicting canonically-underage characters in sexual situations, but only if the characters have been visually altered to appear of at least legal age"
+			li "Submissions depicting small/cute (chibi) characters in sexual situations, but only if it is not implied that the character is underage"
+
+
+	h3 "All Visual Art"
+
+	ul
+		li "Permitted in your Gallery" ul
+			li "Price guides may be posted but are limited to one submission per type of art (e.g. one for visual arts, one for fursuiting) at any given time."
+			li "Submissions used to sell art (e.g. commission auctions, adoptables, YCH) may be uploaded but are limited to one submission per account at any given time. Advertisements posted must be new and original submissions. Reposting of the same item is not permitted. Previously sold items (such as original characters or designs) may be left in a user's gallery as art."
+		li "Permitted in Scraps" ul
+			li "Advertisements (e.g. auctions, YCH/Your Character Here and commission notices/price guides) which exceed the limits above may be uploaded."
+		li "Not Permitted" ul
+			li "Text-only submissions (e.g. streaming notices, ads, descriptions) void of artistic content."
+
+
+	h3 "Photography"
+
+	ul
+		li "Permitted in your Gallery" ul
+			li "Makeup/special FX (fake wounds, gore)"
+			li "Adult user created (unmodified) fursuits or sculptures are permitted so long as they are in pristine condition and they are not being worn/in use"
+			li "People in suggestive poses, so long as the photos otherwise still comply with the AUP"
+			li "Manufactured/collected items which have been significantly modified from the stock version.  Examples include (but are not limited to): custom paint jobs, car restorations, permanent/creative gun modifications"
+		li "Permitted in Scraps" ul
+			li "Unmodified or stock manufactured/collected items (such as cars, guns with or without attachments, toys, plates)"
+		li "Not Permitted" ul
+			li "Animals feeding on other animals"
+
+
+	h3 "Screenshots and 3D Renders"
+
+	ul
+		li "Permitted in your Gallery" ul
+			li "Second Life: screenshots of 3D models made specifically by or for the uploader"
+			li "Public domain/fair use models provided the uploader cites the model’s creators/sources"
+			li "Screenshots of applications, games, movies of content the uploader has created unique content (does not include character creators)"
+			li "Screenshots or sprites of copyright games may be used if part of a comic or recurring series of narrative images"
+		li "Permitted in Scraps" ul
+			li "Generated images (character generators, terrain generators)"
+		li "Not Permitted" ul
+			li "Screenshots of applications, games, movie or websites"
+			li "3D models requiring purchase/sale to use (unless specifically custom made for the uploader)"

@@ -1,0 +1,72 @@
+% function csrf()
+	input
+		type: "hidden"
+		name: "token"
+		value: "#{data.token}"
+
+doctype
+
+html
+	head
+		meta charset: "utf-8"
+
+		meta name: "viewport" content: "initial-scale=1"
+
+		title
+			block title
+			" – Fur Affinity"
+
+		block stylesheets
+
+	body
+		header id: "header"
+			nav id: "navigation"
+				ul id: "main-navigation"
+					li a "Browse" href: "/submissions/"
+					li a "Search" href: "/submissions/search"
+					li a "Submit" href: "/submissions/new"
+					li a "Community" href: "#" # TODO
+					li a "Support" href: "#" # TODO
+
+				% var user = data.user;
+
+				ul id: "user-navigation"
+					if user.id
+						li a "~#{user.username}" href: "/users/#{user.username}/"
+
+						li form
+							method: "POST"
+							action: "/logout"
+
+							% csrf();
+							button "Log Out"
+					else
+						li a "Log In" href: "/login"
+
+			h1 id: "title"
+				"Fur Affinity"
+
+			if data.notifications
+				% var notifications = data.notifications;
+
+				ul id: "notifications"
+					li a "#{notifications.submissions} submission#{s(notifications.submissions)}" href: "/notifications/#submissions"
+					li a "#{notifications.comments} comment#{s(notifications.comments)}" href: "/notifications/#comments"
+					li a "#{notifications.journals} journal#{s(notifications.journals)}" href: "/notifications/#journals"
+					li a "#{notifications.streams} stream#{s(notifications.streams)}" href: "/notifications/#streams"
+					li a "#{notifications.watches} watch#{s(notifications.watches, 'es')}" href: "/notifications/#watches"
+					li a "#{notifications.notes} note#{s(notifications.notes)}" href: "/notifications/#notes"
+
+		main id: "main"
+			block content
+
+		footer id: "footer"
+			ul id: "footer-navigation"
+				li a "Advertising" href: "/advertising"
+				li a "Twitter" href: "https://twitter.com/furaffinity"
+				li a "Facebook" href: "https://www.facebook.com/furaffinity"
+				li a "Terms of Service" href: "/support/terms"
+				li a "Submission Agreement" href: "/support/submission-agreement"
+				li a "Acceptable Upload Policy" href: "/support/acceptable-upload-policy"
+
+			p "Fur Affinity is © 2005–2014 Ferrox Art LLC"

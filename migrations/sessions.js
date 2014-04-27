@@ -7,7 +7,7 @@ module.exports.up = function (query) {
 			"CREATE TABLE sessions(\
 				id SERIAL PRIMARY KEY,\
 				owner INTEGER REFERENCES users (id) ON DELETE CASCADE,\
-				started TIMESTAMP WITH TIME ZONE DEFAULT (NOW() AT TIME ZONE 'UTC')\
+				started TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT (NOW() AT TIME ZONE 'UTC')\
 			)"
 		)();
 };

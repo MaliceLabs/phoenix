@@ -1,7 +1,5 @@
 'use strict';
 
-var ENOTDIR = -20;
-
 var fs = require('fs');
 var path = require('path');
 var util = require('util');
@@ -113,12 +111,38 @@ function changed() {
 	p.kill('SIGINT').then(spawnServer);
 }
 
-process.once('SIGINT', function () {
-	p.kill('SIGINT').then(function () {
-		process.exit(0);
+function beginWatching() {
+	process.once('SIGINT', function () {
+		p.kill('SIGINT').then(function () {
+			process.exit(0);
+		});
 	});
-});
 
-new TreeWatcher(__dirname).on('change', limit(changed, 100));
+	new TreeWatcher(__dirname).on('change', limit(changed, 100));
 
-spawnServer();
+	spawnServer();
+}
+
+function main() {
+	var config = require('./config');
+
+	if (!config.session.key) {
+		console.error('No session.key has been provided in config.json; you’ll need one to sign session IDs.');
+
+		require('crypto').randomBytes(64, function (error, bytes) {
+			if (error) {
+				throw error;
+			}
+
+			console.error('\nHere’s a fresh, random, 64-byte key: \n' + bytes.toString('base64'));
+
+			process.exit(1);
+		});
+
+		return;
+	}
+
+	beginWatching();
+}
+
+main();

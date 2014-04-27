@@ -1,0 +1,31 @@
+extends layout
+
+replace title
+	"Submission agreement"
+
+replace content
+	header
+		h1 "Submission Agreement (SA)"
+
+		div
+			"Last updated "
+			date datetime: "2012-07-26T19:33Z"
+				"2012-07-26 19:33"
+
+	p "By clicking the “Submit” button on Fur Affinity (FA) to upload art, photographic imagery, digital music, sound recordings, Flash animations, video or text-based works, you affirm that you understand and agree to the all of the following terms and statutes:"
+
+	p "Upon submitting to FA you grant the website non-exclusive rights to transmit, resize, store, display, publish or alter any submission media within the boundaries of the site's domains. Submissions may not be uploaded with intent to maliciously target, harass or cause harm to another individual. In addition, submissions uploaded must be of your own creation or must have been created expressly for you (and then, only posted with permission from the original artist(s)). All sources (inspirations, sampling, references, copyright) must be cited, credited and documented within the submission's description. Failure to do so may result in removal of the submission without notice. By finalizing the submission, you agree that any and all information contained within the description of said submission is truthful and accurate."
+
+	p "If you are seventeen (17) years of age or younger you must have explicit permission from a parent or legal guardian before uploading to the server, and you agree that they have read and consented to both the TOS, SA and AUP. By submitting any media which is mature or adult in nature, you state that you are legally eighteen (18) years of age or older. Users under the age of eighteen (18) are not allowed to submit mature or adult content. Users thirteen (13) and below are prohibited from using FA and its services, as per the TOS."
+
+	p "You waive FA and its staff from liability resultant from uploaded submissions or information transferred to the site. You also accept that any submission uploaded to the FA domains is done of your own volition, and you accept full responsibility for any consequences which may arise. You agree that FA is in no way responsible for monetary damages or losses incurred as a result of any submission or information uploaded."
+
+	p "Submissions transferred to FA shall not violate the law of the United States of America, be it State or Federal. Copyright is to be respected, maintained and credited at all times. In the event of legal action, you agree to submit to the exclusive jurisdiction of the State of Virginia and no other domain within the U.S.A."
+
+	p "FA promises to do all that it can, within reason, to protect your information, submissions and intellectual property on the site. Any action taken upon submissions will be performed by the staff with non-bias and fair treatment. Users may dispute admin actions they feel to be in error, but must do so with civility, and through proper channels, via the official FA forums."
+
+	p "Harassment or retaliation against staff for enforcement of the site rules will not be tolerated."
+
+	p "FA retains full rights to modify or change the terms set forth within this document at any time. Any changes will be posted publicly via news updates and/or administrative notices. Any and all changes made to this document become retroactive. No submission shall be “grandfathered” in prior to any changes made to the SA."
+
+	p "Users have full right to terminate this contract at any point."
