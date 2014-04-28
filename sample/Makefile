@@ -44,5 +44,5 @@ ifndef NGINX_CONF_DIR
 	$(error NGINX_CONF_DIR is required)
 endif
 
-	mv -n cert.key cert.crt $(NGINX_CONF_DIR)
-	mv -i nginx.conf $(NGINX_CONF_DIR)
+	cp -i -t $(NGINX_CONF_DIR) cert.key cert.crt dh-params.pem
+	cp -i -t $(NGINX_CONF_DIR) nginx.conf
