@@ -5,6 +5,7 @@ var path = require('path');
 var util = require('util');
 var events = require('events');
 var Promise = require('promise');
+var minimatch = require('minimatch');
 var childProcess = require('child_process');
 
 function cons(head, tail) {
@@ -15,7 +16,15 @@ function cons(head, tail) {
 	return list;
 }
 
-function TreeWatcher(directory) {
+function TreeWatcher(directory, ignoreList) {
+	var shouldIgnore = ignoreList.some(function (ignorePattern) {
+		return minimatch(directory, ignorePattern);
+	});
+
+	if (shouldIgnore) {
+		return;
+	}
+
 	var treeWatcher = this;
 
 	function pass(event) {
@@ -24,9 +33,9 @@ function TreeWatcher(directory) {
 		};
 	}
 
-	fs.watch(directory, pass('change'));
+	fs.watch(path.join(__dirname, directory), pass('change'));
 
-	fs.readdir(directory, function (error, names) {
+	fs.readdir(path.join(__dirname, directory), function (error, names) {
 		if (error) {
 			if (error.message.indexOf('ENOTDIR') === -1) {
 				treeWatcher.emit('error', error);
@@ -36,7 +45,7 @@ function TreeWatcher(directory) {
 		}
 
 		names.forEach(function (name) {
-			var subWatcher = new TreeWatcher(path.join(directory, name));
+			var subWatcher = new TreeWatcher(path.join(directory, name), ignoreList);
 
 			subWatcher.on('error', pass('error'));
 			subWatcher.on('change', pass('change'));
@@ -118,9 +127,18 @@ function beginWatching() {
 		});
 	});
 
-	new TreeWatcher(__dirname).on('change', limit(changed, 100));
+	fs.readFile(path.join(__dirname, '.gitignore'), 'utf8', function (error, content) {
+		if (error) {
+			throw error;
+		}
 
-	spawnServer();
+		var ignoreList = content.trim().split('\n');
+		ignoreList.push('.git');
+
+		new TreeWatcher('.', ignoreList).on('change', limit(changed, 100));
+
+		spawnServer();
+	});
 }
 
 function main() {
