@@ -89,8 +89,10 @@ function createUploadStream() {
 									});
 								});
 							},
-							function () {
-								return db.query('SELECT id FROM media WHERE hash = $1', [hexDigest]).then(getId);
+							function (error) {
+								return db.query('SELECT id FROM media WHERE hash = $1', [hexDigest])
+									.then(getId)
+									.catch(const_(Promise.reject(error)));
 							}
 						)
 						.then(resolveUploaded, rejectUploaded);
