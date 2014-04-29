@@ -127,14 +127,14 @@ function main() {
 	var config = require('./config');
 
 	if (!config.session.key) {
-		console.error('No session.key has been provided in config.json; you’ll need one to sign session IDs.');
+		console.error('No session.key has been provided in config.json; you’ll need one\nto sign session IDs.');
 
 		require('crypto').randomBytes(64, function (error, bytes) {
 			if (error) {
 				throw error;
 			}
 
-			console.error('\nHere’s a fresh, random, 64-byte key: \n' + bytes.toString('base64'));
+			console.error('\nHere’s a fresh, random, 64-byte key:\n' + bytes.toString('base64'));
 
 			process.exit(1);
 		});
