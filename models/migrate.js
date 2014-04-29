@@ -91,7 +91,7 @@ client.connect(function (error) {
 		throw error;
 	}
 
-	Promise.all(databaseRevision(), destinationRevision())
+	Promise.all([databaseRevision(), destinationRevision()])
 		.then(function (result) {
 			if (result[0] === result[1]) {
 				console.log('Database is up to date.');
