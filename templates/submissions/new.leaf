@@ -3,6 +3,22 @@ extends layout
 replace title "Share new submission"
 
 replace content
+	ul id: "media-list"
+		for item of data.media
+			li
+				img class: "media-thumbnail"
+					src: "/media/#{item.hash}"
+					height: "150"
+
+				h3 class: "media-filename"
+					"#{item.name}"
+
+				div class: "media-info"
+					if item.width
+						"#{item.width}×#{item.height}, "
+
+					"#{new ByteSize(item.file_size)}"
+
 	form method: "POST" action: "/submissions/" enctype: "multipart/form-data"
 		% csrf();
 

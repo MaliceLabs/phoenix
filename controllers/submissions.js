@@ -9,7 +9,7 @@ var notifications = require('../models/notifications');
 var users = require('../models/users');
 var media = require('../models/media');
 
-var creationForm = view('submissions/new', [users.ensure('submit'), notifications.counts]);
+var creationForm = view('submissions/new', [users.ensure('submit'), media.listForRequester, notifications.counts]);
 
 function create(request) {
 	return request.user.ensure('submit')
@@ -49,7 +49,7 @@ function create(request) {
 
 							Promise.all(files)
 								.then(function (associatedIds) {
-									var redirectTo = '/media/?' + querystring.stringify({ submit: associatedIds.filter(Boolean) });
+									var redirectTo = '/submissions/new?' + querystring.stringify({ submit: associatedIds.filter(Boolean) });
 
 									resolve(new Redirect(redirectTo, Redirect.SEE_OTHER));
 								})

@@ -67,6 +67,12 @@ function createUploadStream() {
 				rejectUploaded = reject;
 			});
 
+			var totalSize = 0;
+
+			uploadStream.on('data', function (part) {
+				totalSize += part.length;
+			});
+
 			uploadStream.on('end', function () {
 				hashStream.digest.then(function (digest) {
 					var hexDigest = digest.toString('hex');
@@ -75,7 +81,7 @@ function createUploadStream() {
 						return result.rows[0].id;
 					}
 
-					return db.query('INSERT INTO media (hash) VALUES ($1) RETURNING id', [hexDigest])
+					return db.query('INSERT INTO media (hash, type, file_size) VALUES ($1, $2, $3) RETURNING id', [hexDigest, '', totalSize])
 						.then(getId)
 						.then(
 							function (mediaId) {
@@ -111,5 +117,26 @@ function associate(user, mediaId, filename) {
 		.then(mediaId_, mediaId_);
 }
 
+function listFor(user) {
+	return db.query(
+		'SELECT media.id, media.hash, media.type, media.file_size, media.width, media.height, user_media.media, user_media.name FROM media INNER JOIN user_media ON media.id = user_media.media WHERE user_media.owner = $1',
+		[user.id]
+	).then(function (result) {
+		return result.rows;
+	});
+}
+
+function listForRequester(request) {
+	if (!request.user.id) {
+		return Promise.resolve(null);
+	}
+
+	return listFor(request.user).then(function (media) {
+		return { media: media };
+	});
+}
+
 module.exports.createUploadStream = createUploadStream;
 module.exports.associate = associate;
+module.exports.listFor = listFor;
+module.exports.listForRequester = listForRequester;
