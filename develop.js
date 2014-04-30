@@ -127,13 +127,12 @@ function beginWatching() {
 		});
 	});
 
-	fs.readFile(path.join(__dirname, '.gitignore'), 'utf8', function (error, content) {
+	fs.readFile(path.join(__dirname, '.watchignore'), 'utf8', function (error, content) {
 		if (error) {
 			throw error;
 		}
 
 		var ignoreList = content.trim().split('\n');
-		ignoreList.push('.git');
 
 		new TreeWatcher('.', ignoreList).on('change', limit(changed, 100));
 
