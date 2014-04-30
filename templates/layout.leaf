@@ -17,6 +17,7 @@ html
 			" – Fur Affinity"
 
 		block stylesheets
+			link rel: "stylesheet" href: "/stylesheets/default.css"
 
 	body
 		header id: "header"
@@ -34,28 +35,31 @@ html
 					if user.id
 						li a "~#{user.username}" href: "/users/#{user.username}/"
 
+						li a "Settings" href: "/settings/"
+
 						li form
 							method: "POST"
 							action: "/logout"
 
 							% csrf();
-							button "Log Out"
+							button id: "log-out" "Log Out"
 					else
 						li a "Log In" href: "/login"
-
-			h1 id: "title"
-				"Fur Affinity"
 
 			if data.notifications
 				% var notifications = data.notifications;
 
 				ul id: "notifications"
-					li a "#{notifications.submissions} submission#{s(notifications.submissions)}" href: "/notifications/#submissions"
-					li a "#{notifications.comments} comment#{s(notifications.comments)}" href: "/notifications/#comments"
-					li a "#{notifications.journals} journal#{s(notifications.journals)}" href: "/notifications/#journals"
-					li a "#{notifications.streams} stream#{s(notifications.streams)}" href: "/notifications/#streams"
-					li a "#{notifications.watches} watch#{s(notifications.watches, 'es')}" href: "/notifications/#watches"
-					li a "#{notifications.notes} note#{s(notifications.notes)}" href: "/notifications/#notes"
+					li a "#{notifications.submissions} submission#{s(notifications.submissions)}" href: "/notifications/#submissions"
+					li a "#{notifications.comments} comment#{s(notifications.comments)}" href: "/notifications/#comments"
+					li a "#{notifications.journals} journal#{s(notifications.journals)}" href: "/notifications/#journals"
+					li a "#{notifications.streams} stream#{s(notifications.streams)}" href: "/notifications/#streams"
+					li a "#{notifications.watches} watch#{s(notifications.watches, 'es')}" href: "/notifications/#watches"
+					li a "#{notifications.notes} note#{s(notifications.notes)}" href: "/notifications/#notes"
+
+			h1 id: "title"
+				img id: "logo" src: "/images/logo.png" alt: "Fur Affinity Logo"
+				" Fur Affinity"
 
 		main id: "main"
 			block content

@@ -1,0 +1,155 @@
+/* Reset
+-------------------------------*/
+::-moz-focus-inner {
+	border: none;
+	padding: 0;
+}
+
+/* General
+-------------------------------*/
+html {
+	min-height: 100%;
+	position: relative;
+}
+
+body {
+	background-color: #323539;
+	color: #ccc;
+	font-family: Open Sans, sans-serif;
+	font-size: 12pt;
+	margin: 0;
+	padding-bottom: 5em;
+}
+
+a {
+	color: #ccc;
+	text-decoration: none;
+}
+
+/* Header
+-------------------------------*/
+#title {
+	background-image: url('../images/banner.jpg');
+	font-weight: 300;
+	letter-spacing: 0.1em;
+	line-height: 90px;
+	margin: 0;
+	padding: 0 0.7em;
+	text-transform: uppercase;
+}
+
+#logo {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+/* Navigation
+-------------------------------*/
+#navigation {
+	background-color: #121416;
+	display: flex;
+}
+
+#navigation ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#navigation li {
+	display: inline-block;
+}
+
+#navigation a, #log-out {
+	display: inline-block;
+	padding: 0.725em 1.125em;
+}
+
+#main-navigation {
+	flex: 1;
+}
+
+#user-navigation {
+	flex-shrink: 1;
+}
+
+#log-out {
+	background-color: #792f1d;
+	border: none;
+	color: #ccc;
+	cursor: pointer;
+	font: inherit;
+}
+
+/* Notification bar
+-------------------------------*/
+#notifications {
+	background-color: #314753;
+	list-style: none;
+	font-size: 0.95em;
+	margin: 0;
+	text-align: right;
+}
+
+#notifications li {
+	display: inline-block;
+}
+
+#notifications a {
+	display: inline-block;
+	line-height: 2.95;
+	padding: 0 1em;
+}
+
+.content a:hover {
+	color: #466995;
+}
+
+.notification-header {
+	background-color: #151717;
+	font-size: 24px;
+	line-height: 40px;
+	height: 60px;
+	padding: 10px 10px 0 25px;
+	overflow: hidden;
+	border-radius: 8px 8px 0 0;
+	min-width: 830px;
+}
+
+/* Content
+-------------------------------*/
+#main {
+	padding: 1.2em;
+}
+
+/* Footer
+-------------------------------*/
+#footer {
+	background-color: #121416;
+	bottom: 0;
+	color: #bbb;
+	font-size: 0.8em;
+	left: 0;
+	padding: 1.5em;
+	position: absolute;
+	right: 0;
+}
+
+#footer a {
+	color: inherit;
+}
+
+#footer-navigation {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#footer-navigation li {
+	display: inline-block;
+}
+
+#footer-navigation li + li::before {
+	content: '|';
+	margin: 0 0.4em;
+}
