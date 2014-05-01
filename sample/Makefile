@@ -28,7 +28,6 @@ cert.crt: cert.csr cert.cfg
 		--load-request cert.csr \
 		--template cert.cfg \
 		--outfile cert.crt
-	rm cert.csr
 
 dh-params.pem:
 	$(GNUTLS_CERTTOOL) --generate-dh-params --outfile dh-params.pem
