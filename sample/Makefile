@@ -40,10 +40,8 @@ clean:
 	rm -f ca.key ca.crt cert.key cert.csr cert.crt dh-params.pem nginx.conf
 
 .PHONY: install
-install:
-ifndef NGINX_CONF_DIR
-	$(error NGINX_CONF_DIR is required)
-endif
+install: cert.key cert.crt dh-params.pem nginx.conf
+	@! test -z $(NGINX_CONF_DIR) || ! echo 'NGINX_CONF_DIR is required.'
 
-	cp -i -t $(NGINX_CONF_DIR) cert.key cert.crt dh-params.pem
-	cp -i -t $(NGINX_CONF_DIR) nginx.conf
+	cp -i cert.key cert.crt dh-params.pem $(NGINX_CONF_DIR)
+	cp -i nginx.conf $(NGINX_CONF_DIR)
