@@ -14,12 +14,8 @@ redesign of code, user interface, and database.
 
 ## Configuration
 
-`config.json` contains the application configuration. It includes:
-
- - `database`, the PostgreSQL connection string
- - `password`
-   - `bcryptRounds`, the base-2 logarithm of the number of rounds of bcrypt
-     to be applied to passwords
+To get started, create `config.json` from `config.sample.json`.
+Phoenix will read its configuration from here.
 
 `sample/` contains sample Nginx configuration. You can get started quickly
 with its Makefile:
