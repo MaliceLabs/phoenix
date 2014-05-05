@@ -1,7 +1,6 @@
 'use strict';
 
 var Promise = require('promise');
-var util = require('util');
 var crypto = require('crypto');
 var stream = require('stream');
 var fs = require('fs');
@@ -18,31 +17,6 @@ function const_(obj) {
 	};
 }
 
-function HashStream() {
-	HashStream.super_.call(this);
-
-	var resolveDigest;
-	var hash = crypto.createHash('sha256');
-
-	this.hash = hash;
-
-	this.digest = new Promise(function (resolve) {
-		resolveDigest = resolve;
-	});
-
-	this.on('finish', function () {
-		this.hash = null;
-		resolveDigest(hash.digest());
-	});
-}
-
-util.inherits(HashStream, stream.Writable);
-
-HashStream.prototype._write = function (chunk, encoding, callback) {
-	this.hash.update(chunk, encoding);
-	process.nextTick(callback);
-};
-
 function createUploadStream() {
 	return new Promise(function (resolve, reject) {
 		crypto.randomBytes(15, function (error, bytes) {
@@ -52,11 +26,11 @@ function createUploadStream() {
 			}
 
 			var tempPath = path.join(temporaryDirectory, bytes.toString('base64').replace(/\//g, '-'));
-			var hashStream = new HashStream();
+			var hash = crypto.createHash('sha256');
 			var fileStream = fs.createWriteStream(tempPath, { flags: 'wx', mode: 6 << 6 });
 			var uploadStream = new stream.PassThrough();
 
-			uploadStream.pipe(hashStream);
+			uploadStream.pipe(hash);
 			uploadStream.pipe(fileStream);
 
 			var resolveUploaded;
@@ -74,35 +48,33 @@ function createUploadStream() {
 			});
 
 			uploadStream.on('end', function () {
-				hashStream.digest.then(function (digest) {
-					var hexDigest = digest.toString('hex');
+				var hexDigest = hash.read().toString('hex');
 
-					function getId(result) {
-						return result.rows[0].id;
-					}
+				function getId(result) {
+					return result.rows[0].id;
+				}
 
-					return db.query('INSERT INTO media (hash, type, file_size) VALUES ($1, $2, $3) RETURNING id', [hexDigest, '', totalSize])
-						.then(getId)
-						.then(
-							function (mediaId) {
-								return new Promise(function (resolve, reject) {
-									fs.rename(tempPath, path.join(mediaDirectory, hexDigest), function (error) {
-										if (error) {
-											reject(error);
-										} else {
-											resolve(mediaId);
-										}
-									});
+				return db.query('INSERT INTO media (hash, type, file_size) VALUES ($1, $2, $3) RETURNING id', [hexDigest, '', totalSize])
+					.then(getId)
+					.then(
+						function (mediaId) {
+							return new Promise(function (resolve, reject) {
+								fs.rename(tempPath, path.join(mediaDirectory, hexDigest), function (error) {
+									if (error) {
+										reject(error);
+									} else {
+										resolve(mediaId);
+									}
 								});
-							},
-							function (error) {
-								return db.query('SELECT id FROM media WHERE hash = $1', [hexDigest])
-									.then(getId)
-									.catch(const_(Promise.reject(error)));
-							}
-						)
-						.then(resolveUploaded, rejectUploaded);
-				});
+							});
+						},
+						function (error) {
+							return db.query('SELECT id FROM media WHERE hash = $1', [hexDigest])
+								.then(getId)
+								.catch(const_(Promise.reject(error)));
+						}
+					)
+					.then(resolveUploaded, rejectUploaded);
 			});
 
 			resolve(uploadStream);
