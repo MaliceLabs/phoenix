@@ -95,7 +95,7 @@ client.connect(function (error) {
 		.then(function (result) {
 			if (result[0] === result[1]) {
 				console.log('Database is up to date.');
-				return;
+				return Promise.resolve();
 			}
 
 			return upgradeTo(result[0], result[1], result[1]);

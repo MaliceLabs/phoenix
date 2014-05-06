@@ -1,3 +1,5 @@
+![[Build status]][Travis badge]
+
 **Phoenix** is a rewrite of [Fur Affinity] in [Node.js],
 in an attempt to improve security and maintainability. It sports a full
 redesign of code, user interface, and database.
@@ -43,3 +45,6 @@ and visit <https://local.furaffinity.net/>!
   [Redis]: http://redis.io/
   [Nginx]: http://nginx.org/
   [GraphicsMagick]: http://www.graphicsmagick.org/
+
+  [Build status]: https://travis-ci.org/FurAffinity/phoenix
+  [Travis badge]: https://api.travis-ci.org/FurAffinity/phoenix.svg?branch=master

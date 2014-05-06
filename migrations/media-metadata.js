@@ -9,8 +9,7 @@ module.exports.up = function (query) {
 		.then(query("ALTER TABLE media ADD type VARCHAR NOT NULL"))
 		.then(query("ALTER TABLE media ADD file_size INTEGER NOT NULL"))
 		.then(query("ALTER TABLE media ADD width INTEGER"))
-		.then(query("ALTER TABLE media ADD height INTEGER"))
-		;
+		.then(query("ALTER TABLE media ADD height INTEGER"));
 };
 
 module.exports.down = function (query) {

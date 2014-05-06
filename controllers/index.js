@@ -2,5 +2,5 @@
 
 module.exports = {
 	general: require('./general'),
-	authentication: require('./authentication'),
+	authentication: require('./authentication')
 };
