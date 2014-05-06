@@ -3,5 +3,5 @@
 module.exports = {
 	general: require('./general'),
 	authentication: require('./authentication'),
-	submissions: require('./submissions'),
+	submissions: require('./submissions')
 };
