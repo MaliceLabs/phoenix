@@ -2,10 +2,13 @@ extends layout
 
 replace title "Share new submission"
 
+append stylesheets
+	link rel: "stylesheet" href: "/stylesheets/media.css"
+
 replace content
 	ul id: "media-list"
 		for item of data.media
-			li
+			li class: "media-item"
 				img class: "media-thumbnail"
 					src: "/media/#{item.hash}"
 					height: "150"
@@ -22,12 +25,13 @@ replace content
 	form method: "POST" action: "/submissions/" enctype: "multipart/form-data"
 		% csrf();
 
-		" " label
-			"Media to upload: "
+		" " label class: "file-upload"
+			span class: "label"
+				"Upload media "
 
 			input
 				type: "file"
 				name: "file"
 				multiple:
 
-		" " button "Create submission"
+		" " button "Create submission" class: "button"

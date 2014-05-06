@@ -18,12 +18,46 @@ body {
 	font-family: Open Sans, sans-serif;
 	font-size: 12pt;
 	margin: 0;
-	padding-bottom: 5em;
+	padding-bottom: 6.5em;
 }
 
 a {
 	color: #ccc;
 	text-decoration: none;
+}
+
+/* Interactive
+-------------------------------*/
+.button {
+	background-color: #344f75;
+	border: none;
+	border-radius: 0.3em;
+	color: #e4e4e4;
+	cursor: pointer;
+	font-family: Open Sans, sans-serif;
+	font-size: 1em;
+	line-height: 2.5;
+	margin: 0;
+	outline: none;
+	padding: 0 1.2em;
+}
+
+.file-upload {
+	border: 0.2em dashed #999;
+	border-radius: 0.4em;
+	display: block;
+	cursor: pointer;
+	margin: 1em 0;
+	max-width: 30em;
+	padding: 1em;
+	text-align: center;
+}
+
+.file-upload .label {
+	color: white;
+	display: block;
+	font-size: 1.3em;
+	margin-bottom: 0.6em;
 }
 
 /* Header
