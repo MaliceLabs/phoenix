@@ -1,0 +1,21 @@
+.cut-container {
+	cursor: move;
+	outline: none;
+	overflow: hidden;
+	position: relative;
+	touch-action: none;
+}
+
+.cut-image {
+	left: 50%;
+	opacity: 0.3;
+	position: absolute;
+	top: 50%;
+}
+
+.cut-crop-box {
+	background-repeat: no-repeat;
+	left: 50%;
+	position: absolute;
+	top: 50%;
+}

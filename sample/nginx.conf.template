@@ -60,6 +60,7 @@ http {
 		location /images {}
 		location /stylesheets {}
 		location /scripts {}
+		location /vendor {}
 		location /errors {}
 
 		error_page 502 /errors/502.html;
