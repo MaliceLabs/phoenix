@@ -12,6 +12,7 @@ redesign of code, user interface, and database.
  - [Redis]
  - [Nginx]
  - [GraphicsMagick]
+ - [GnuTLS]
 
 
 ## Configuration
@@ -45,6 +46,7 @@ and visit <https://local.furaffinity.net/>!
   [Redis]: http://redis.io/
   [Nginx]: http://nginx.org/
   [GraphicsMagick]: http://www.graphicsmagick.org/
+  [GnuTLS]: http://www.gnutls.org/
 
   [Build status]: https://travis-ci.org/FurAffinity/phoenix
   [Travis badge]: https://api.travis-ci.org/FurAffinity/phoenix.svg?branch=master
