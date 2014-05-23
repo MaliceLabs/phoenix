@@ -1,0 +1,10 @@
+extends layout
+
+replace title "Edit submission"
+
+append stylesheets
+	link rel: "stylesheet" href: "/stylesheets/media.css"
+
+replace content
+	form method: "POST"
+		% csrf();

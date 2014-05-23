@@ -9,9 +9,10 @@ var notifications = require('../models/notifications');
 var users = require('../models/users');
 var media = require('../models/media');
 
-var creationForm = view('submissions/new', [users.ensure('submit'), media.listForRequester, notifications.counts]);
+var uploadForm = view('submissions/upload', [users.ensure('submit'), media.listForRequester, notifications.counts]);
+var createForm = view('submissions/edit', [users.ensure('submit'), notifications.counts]);
 
-function create(request) {
+function upload(request) {
 	return request.user.ensure('submit')
 		.then(
 			function () {
@@ -43,7 +44,7 @@ function create(request) {
 
 						form.on('finish', function () {
 							if (!fileCount) {
-								creationForm(request).then(resolve).catch(reject);
+								uploadForm(request).then(resolve).catch(reject);
 								return;
 							}
 
@@ -64,5 +65,6 @@ function create(request) {
 		);
 }
 
-exports.creationForm = creationForm;
-exports.create = create;
+exports.uploadForm = uploadForm;
+exports.createForm = createForm;
+exports.upload = upload;
