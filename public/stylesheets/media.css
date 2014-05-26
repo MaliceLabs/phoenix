@@ -1,0 +1,33 @@
+/* Media list
+--------------------------------*/
+#media-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#media-list .media-item {
+	min-height: 150px;
+	padding-left: 10em;
+	position: relative;
+}
+
+#media-list .media-item + .media-item {
+	margin-top: 1em;
+}
+
+#media-list .media-thumbnail {
+	clip: rect(0, 9em, auto, 0);
+	left: 0;
+	position: absolute;
+}
+
+#media-list .media-filename {
+	color: white;
+	font-size: 1.4em;
+	font-weight: 300;
+	margin: 0;
+}
+
+/* Upload
+--------------------------------*/

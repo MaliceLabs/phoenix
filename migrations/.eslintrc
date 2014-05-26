@@ -1,0 +1,6 @@
+{
+	"rules": {
+		"no-multi-str": false,
+		"quotes": false
+	}
+}

@@ -1,3 +1,5 @@
+[![Build status][Travis badge]][Build status]
+
 **Phoenix** is a rewrite of [Fur Affinity] in [Node.js],
 in an attempt to improve security and maintainability. It sports a full
 redesign of code, user interface, and database.
@@ -10,16 +12,13 @@ redesign of code, user interface, and database.
  - [Redis]
  - [Nginx]
  - [GraphicsMagick]
+ - [GnuTLS]
 
 
 ## Configuration
 
-`config.json` contains the application configuration. It includes:
-
- - `database`, the PostgreSQL connection string
- - `password`
-   - `bcryptRounds`, the base-2 logarithm of the number of rounds of bcrypt
-     to be applied to passwords
+To get started, create `config.json` from `config.sample.json`.
+Phoenix will read its configuration from here.
 
 `sample/` contains sample Nginx configuration. You can get started quickly
 with its Makefile:
@@ -47,3 +46,7 @@ and visit <https://local.furaffinity.net/>!
   [Redis]: http://redis.io/
   [Nginx]: http://nginx.org/
   [GraphicsMagick]: http://www.graphicsmagick.org/
+  [GnuTLS]: http://www.gnutls.org/
+
+  [Build status]: https://travis-ci.org/FurAffinity/phoenix
+  [Travis badge]: https://api.travis-ci.org/FurAffinity/phoenix.svg?branch=master
