@@ -16,6 +16,7 @@ function login(request, response) {
 				return loginForm.with({
 					failureType: result.failureType,
 					username: form.username,
+					password: form.password,
 					returnTo: form.return_to
 				})(request);
 			}
