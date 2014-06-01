@@ -15,17 +15,10 @@ function counts(request) {
 		return Promise.resolve(null);
 	}
 
-	return new Promise(function (resolve, reject) {
-		redis.hmget('notifications:' + request.user.id, keys, function (error, values) {
-			if (error) {
-				reject(error);
-				return;
-			}
-
-			resolve({
-				notifications: _.zipObject(keys, values.map(toInteger))
-			});
-		});
+	return redis.hmget('notifications:' + request.user.id, keys).then(function (values) {
+		return {
+			notifications: _.zipObject(keys, values.map(toInteger))
+		};
 	});
 }
 
