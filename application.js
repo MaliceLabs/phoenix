@@ -15,7 +15,7 @@ if (app.get('env') === 'development') {
 }
 
 // Cookie-based CSRF tokens and sessions
-app.use(require('cookie-parser')());
+app.use(require('./lib/cookie-parser').middleware);
 app.use(require('./lib/form-session').middleware);
 
 // Routes
