@@ -108,7 +108,7 @@ function listForRequester(request) {
 	});
 }
 
-module.exports.createUploadStream = createUploadStream;
-module.exports.associate = associate;
-module.exports.listFor = listFor;
-module.exports.listForRequester = listForRequester;
+exports.createUploadStream = createUploadStream;
+exports.associate = associate;
+exports.listFor = listFor;
+exports.listForRequester = listForRequester;

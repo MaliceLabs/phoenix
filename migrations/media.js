@@ -2,9 +2,9 @@
 
 var Promise = require('promise');
 
-module.exports.base = 'sessions';
+exports.base = 'sessions';
 
-module.exports.up = function (query) {
+exports.up = function (query) {
 	return Promise.resolve()
 		.then(query(
 			"CREATE TABLE media (\
@@ -22,7 +22,7 @@ module.exports.up = function (query) {
 		));
 };
 
-module.exports.down = function (query) {
+exports.down = function (query) {
 	return Promise.resolve()
 		.then(query("DROP TABLE user_media"))
 		.then(query("DROP TABLE media"));

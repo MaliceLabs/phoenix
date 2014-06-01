@@ -29,4 +29,4 @@ function counts(request) {
 	});
 }
 
-module.exports.counts = counts;
+exports.counts = counts;

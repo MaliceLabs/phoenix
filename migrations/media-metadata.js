@@ -2,9 +2,9 @@
 
 var Promise = require('promise');
 
-module.exports.base = 'media';
+exports.base = 'media';
 
-module.exports.up = function (query) {
+exports.up = function (query) {
 	return Promise.resolve()
 		.then(query("ALTER TABLE media ADD type VARCHAR NOT NULL"))
 		.then(query("ALTER TABLE media ADD file_size INTEGER NOT NULL"))
@@ -12,7 +12,7 @@ module.exports.up = function (query) {
 		.then(query("ALTER TABLE media ADD height INTEGER"));
 };
 
-module.exports.down = function (query) {
+exports.down = function (query) {
 	return Promise.resolve()
 		.then(query("ALTER TABLE user_media DROP type,\
 		                                    DROP file_size,\

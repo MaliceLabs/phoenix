@@ -1,8 +1,8 @@
 'use strict';
 
-module.exports.base = 'users-and-submissions';
+exports.base = 'users-and-submissions';
 
-module.exports.up = function (query) {
+exports.up = function (query) {
 	return query(
 			"CREATE TABLE sessions(\
 				id SERIAL PRIMARY KEY,\
@@ -12,6 +12,6 @@ module.exports.up = function (query) {
 		)();
 };
 
-module.exports.down = function (query) {
+exports.down = function (query) {
 	return query("DROP TABLE sessions")();
 };

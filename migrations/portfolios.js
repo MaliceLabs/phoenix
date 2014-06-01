@@ -2,9 +2,9 @@
 
 var Promise = require('promise');
 
-module.exports.base = 'tags';
+exports.base = 'tags';
 
-module.exports.up = function (query) {
+exports.up = function (query) {
 	return Promise.resolve()
 		.then(query(
 			"CREATE TABLE portfolios (\
@@ -16,7 +16,7 @@ module.exports.up = function (query) {
 		));
 };
 
-module.exports.down = function (query) {
+exports.down = function (query) {
 	return Promise.resolve()
 		.then(query("DROP TABLE portfolios"));
 };
