@@ -35,6 +35,7 @@ server {
 	location /media {}
 	location /images {}
 	location /stylesheets {}
+	location /fonts {}
 	location /scripts {}
 	location /vendor {}
 	location /errors {}
