@@ -42,6 +42,11 @@ a {
 	padding: 0 1.2em;
 }
 
+form:invalid .submit {
+	background-color: #999;
+	cursor: not-allowed;
+}
+
 .file-upload {
 	border: 0.2em dashed #999;
 	border-radius: 0.4em;

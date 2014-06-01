@@ -33,5 +33,6 @@ replace content
 				type: "file"
 				name: "file"
 				multiple:
+				required:
 
-		" " button "Create submission" class: "button"
+		" " button "Create submission" class: "button submit"
