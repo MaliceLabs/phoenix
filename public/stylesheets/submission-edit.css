@@ -1,0 +1,181 @@
+#main {
+	padding: 0;
+}
+
+#submission-edit-form {
+	display: flex;
+	flex-direction: column;
+}
+
+#submission-edit-form > header, #submission-edit-form > footer {
+	background-color: #202225;
+	padding: 1em;
+	text-align: right;
+}
+
+#submission-edit-form > header .button, #submission-edit-form > footer .button {
+	margin-left: 0.4em;
+}
+
+#submission-edit-info {
+	order: -1;
+}
+
+#submission-edit-info .submission-type {
+	float: left;
+	font-size: 1.8em;
+	font-weight: 300;
+	margin-left: 0.6em;
+}
+
+#submission-edit-info .submission-type strong {
+	color: #5594b6;
+	font-size: 0.9em;
+	font-weight: inherit;
+	margin-left: 0.3em;
+}
+
+#preview {
+	background-color: #151719;
+	order: -1;
+	padding: 1em;
+}
+
+#submission-edit-form .submission-section-tabs {
+	background-color: #202225;
+	display: block;
+	font-size: 1.3em;
+	font-weight: 300;
+	order: -1;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
+
+#submission-edit-form .submission-section-tabs ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+#submission-edit-form .submission-section-tabs li {
+	display: inline-block;
+}
+
+#submission-edit-form .submission-section-tabs a {
+	color: #888;
+	display: inline-block;
+	padding: 0.5em 0.8em;
+}
+
+#thumbnail:target ~ .submission-section-tabs a[href='#thumbnail'],
+#tags:target ~ .submission-section-tabs a[href='#tags'],
+#portfolios:target ~ .submission-section-tabs a[href='#portfolios'],
+#publishing:target ~ .submission-section-tabs a[href='#publishing'],
+#submission-edit-form #general:target ~ .submission-section-tabs a[href='#general'],
+#submission-edit-form .submission-section-tabs a[href='#general'] {
+	background-color: #323539;
+	color: white;
+}
+
+#submission-edit-form section:target ~ .submission-section-tabs a[href='#general'] {
+	background-color: transparent;
+	color: #888;
+}
+
+#submission-edit-form > section {
+	margin: 0 auto;
+	padding-top: 2.2em;
+	width: 40em;
+}
+
+#submission-edit-form h3 {
+	font-size: 1.4em;
+	font-weight: 600;
+}
+
+#submission-edit-form .field {
+	position: relative;
+}
+
+#submission-edit-form .field .label {
+	font-size: 1.2em;
+	margin-right: 0.6em;
+	position: absolute;
+	right: 100%;
+	top: 0.4em;
+	white-space: nowrap;
+}
+
+#submission-edit-form .field .text {
+	width: 100%;
+}
+
+#title-field {
+	font-size: 1.2em;
+}
+
+#submission-edit-form .rating {
+	background-color: #40454c;
+	border-radius: 0.2em;
+	display: block;
+	display: flex;
+	overflow: hidden;
+	margin: 0.5em 0;
+}
+
+#submission-edit-form .rating input {
+	left: -9999px;
+	position: absolute;
+}
+
+#submission-edit-form .rating h4 {
+	background-color: #454f57;
+	background-image: url('../images/radio-off.png');
+	background-position: 0.9em center;
+	background-repeat: no-repeat;
+	color: white;
+	display: inline-block;
+	font-size: 1.2em;
+	font-weight: 400;
+	margin: 0;
+	padding: 0.6em 0.8em 0.6em 2.4em;
+	width: 4.2em;
+}
+
+#submission-edit-form .rating :checked + h4 {
+	background-image: url('../images/radio-on.png');
+}
+
+#submission-edit-form .rating.general :checked + h4 {
+	background-color: #3d6933;
+}
+
+#submission-edit-form .rating.mature :checked + h4 {
+	background-color: #335469;
+}
+
+#submission-edit-form .rating.adult :checked + h4 {
+	background-color: #693c33;
+}
+
+#submission-edit-form .rating .description {
+	display: inline-block;
+	flex: 1;
+	font-size: 0.9em;
+	margin: 0;
+	padding: 0.35em 1em;
+}
+
+#submission-edit-form .rating .description::before {
+	content: '';
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+
+#submission-edit-form .rating .description span {
+	display: inline-block;
+	vertical-align: middle;
+}

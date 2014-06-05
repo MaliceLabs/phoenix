@@ -48,7 +48,7 @@ body {
 	font-family: Open Sans, sans-serif;
 	font-size: 12pt;
 	margin: 0;
-	padding-bottom: 6.5em;
+	padding-bottom: 6.25em;
 }
 
 a {
@@ -61,7 +61,7 @@ a {
 .button {
 	background-color: #344f75;
 	border: none;
-	border-radius: 0.3em;
+	border-radius: 0.2em;
 	color: #e4e4e4;
 	cursor: pointer;
 	font-family: Open Sans, sans-serif;
@@ -72,9 +72,74 @@ a {
 	padding: 0 1.2em;
 }
 
+.button.primary {
+	background-color: #345a1f;
+}
+
 form:invalid .submit {
 	background-color: #999;
+	color: #444;
 	cursor: not-allowed;
+}
+
+.field {
+	display: block;
+	margin: 0.8em 0;
+}
+
+.option {
+	display: block;
+	margin: 1.2em 0;
+}
+
+.option > input {
+	left: -9999px;
+	position: absolute;
+}
+
+.option h4 {
+	background-image: url('../images/checkbox-off.png');
+	background-position: 0 center;
+	background-repeat: no-repeat;
+	color: white;
+	font-size: 1.1em;
+	font-weight: 300;
+	line-height: 1.6;
+	margin: 0;
+	margin-left: -2.8em;
+	padding-left: 2.8em;
+}
+
+.option :checked + .label h4 {
+	background-image: url('../images/checkbox-on.png');
+}
+
+.option .label {
+	padding-left: 3.4em;
+}
+
+.option p {
+	color: #999;
+	font-size: 0.9em;
+	font-weight: 300;
+	margin-top: 0.2em;
+}
+
+.text {
+	background-color: #4f545a;
+	border: none;
+	border-radius: 0.2em;
+	box-sizing: border-box;
+	color: white;
+	font-family: Open Sans, sans-serif;
+	font-size: 1em;
+	padding: 0.4em 0.6em;
+	vertical-align: middle;
+}
+
+textarea.text {
+	min-height: 2.2em;
+	resize: vertical;
 }
 
 .file-upload {
@@ -148,6 +213,7 @@ form:invalid .submit {
 	color: #ccc;
 	cursor: pointer;
 	font: inherit;
+	margin: 0;
 }
 
 /* Notification bar

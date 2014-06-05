@@ -8,9 +8,10 @@ var view = require('../lib/view').view;
 var notifications = require('../models/notifications');
 var users = require('../models/users');
 var media = require('../models/media');
+var tags = require('../models/tags');
 
 var uploadForm = view('submissions/upload', [users.ensure('submit'), media.listForRequester, notifications.counts]);
-var createForm = view('submissions/edit', [users.ensure('submit'), notifications.counts]);
+var createForm = view('submissions/edit', [users.ensure('submit'), tags.mostCommonTagsForRequester, notifications.counts]);
 
 function upload(request) {
 	return request.user.ensure('submit')
