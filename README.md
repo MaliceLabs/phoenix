@@ -12,6 +12,7 @@ redesign of code, user interface, and database.
  - [Redis]
  - [Nginx]
  - [GraphicsMagick]
+ - [libvips]
  - [GnuTLS]
 
 
@@ -49,6 +50,7 @@ the database can be filled using `node models/add-test-data`.
   [Redis]: http://redis.io/
   [Nginx]: http://nginx.org/
   [GraphicsMagick]: http://www.graphicsmagick.org/
+  [libvips]: https://github.com/jcupitt/libvips
   [GnuTLS]: http://www.gnutls.org/
 
   [Build status]: https://travis-ci.org/FurAffinity/phoenix
