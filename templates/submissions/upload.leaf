@@ -33,5 +33,7 @@ replace content
 				type: "file"
 				name: "file"
 				multiple:
+				required:
+				accept: "image/*,video/*,audio/*,application/x-shockwave-flash,text/plain,application/pdf,application/msword,.docx"
 
-		" " button "Create submission" class: "button"
+		" " button "Create submission" class: "button submit"

@@ -1,7 +1,5 @@
 'use strict';
 
-module.exports = {
-	general: require('./general'),
-	authentication: require('./authentication'),
-	submissions: require('./submissions')
-};
+exports.general = require('./general');
+exports.authentication = require('./authentication');
+exports.submissions = require('./submissions');

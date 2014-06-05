@@ -12,6 +12,7 @@ redesign of code, user interface, and database.
  - [Redis]
  - [Nginx]
  - [GraphicsMagick]
+ - [libvips]
  - [GnuTLS]
 
 
@@ -24,14 +25,17 @@ Phoenix will read its configuration from here.
 with its Makefile:
 
 ```shell
-$ make -C sample/
-⋮
-$ sudo make -C sample/ install NGINX_CONF_DIR=/path/to/nginx/conf/
+$ cd sample
+$ make
+$ sudo make install NGINX_CONF_DIR=/path/to/nginx/conf/
 ```
 
 Then import your new development CA from `sample/ca.crt`, start Nginx,
 add an `/etc/hosts` (or equivalent) entry for `::1 local.furaffinity.net`,
 and visit <https://local.furaffinity.net/>!
+
+After running the first migration with `node models/migrate`,
+the database can be filled using `node models/add-test-data`.
 
 
 ## Running the server
@@ -46,6 +50,7 @@ and visit <https://local.furaffinity.net/>!
   [Redis]: http://redis.io/
   [Nginx]: http://nginx.org/
   [GraphicsMagick]: http://www.graphicsmagick.org/
+  [libvips]: https://github.com/jcupitt/libvips
   [GnuTLS]: http://www.gnutls.org/
 
   [Build status]: https://travis-ci.org/FurAffinity/phoenix

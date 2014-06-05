@@ -4,6 +4,7 @@ replace title "Log In"
 
 replace content
 	% var username = data.username;
+	% var password = data.password;
 	% var failureType = data.failureType;
 	% var returnTo = data.returnTo || data.query.return_to;
 	% var focusUsername = !username;
@@ -47,7 +48,9 @@ replace content
 				name: "password"
 				accesskey: "p"
 				maxlength: "1024"
-				value: ""
+
+				if password
+					value: "#{password}"
 
 				if !focusUsername
 					autofocus:

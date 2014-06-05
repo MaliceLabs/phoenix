@@ -41,10 +41,10 @@ function createUploadStream() {
 				rejectUploaded = reject;
 			});
 
-			var totalSize = 0;
+			var totalLength = 0;
 
 			uploadStream.on('data', function (part) {
-				totalSize += part.length;
+				totalLength += part.length;
 			});
 
 			uploadStream.on('end', function () {
@@ -54,7 +54,7 @@ function createUploadStream() {
 					return result.rows[0].id;
 				}
 
-				return db.query('INSERT INTO media (hash, type, file_size) VALUES ($1, $2, $3) RETURNING id', [hexDigest, '', totalSize])
+				return db.query('INSERT INTO media (hash, type, file_size) VALUES ($1, $2, $3) RETURNING id', [hexDigest, '', totalLength])
 					.then(getId)
 					.then(
 						function (mediaId) {
@@ -108,7 +108,7 @@ function listForRequester(request) {
 	});
 }
 
-module.exports.createUploadStream = createUploadStream;
-module.exports.associate = associate;
-module.exports.listFor = listFor;
-module.exports.listForRequester = listForRequester;
+exports.createUploadStream = createUploadStream;
+exports.associate = associate;
+exports.listFor = listFor;
+exports.listForRequester = listForRequester;

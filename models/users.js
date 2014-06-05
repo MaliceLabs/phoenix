@@ -108,9 +108,9 @@ function ensure(privilege) {
 	};
 }
 
-module.exports.Privileged = Privileged;
-module.exports.User = User;
-module.exports.Guest = Guest;
-module.exports.authenticate = authenticate;
-module.exports.create = create;
-module.exports.ensure = ensure;
+exports.Privileged = Privileged;
+exports.User = User;
+exports.Guest = Guest;
+exports.authenticate = authenticate;
+exports.create = create;
+exports.ensure = ensure;

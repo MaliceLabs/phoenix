@@ -3,8 +3,172 @@ extends layout
 replace title "Edit submission"
 
 append stylesheets
-	link rel: "stylesheet" href: "/stylesheets/media.css"
+	link rel: "stylesheet" href: "/stylesheets/submission-edit.css"
 
 replace content
-	form method: "POST"
+	form id: "submission-edit-form" method: "POST"
 		% csrf();
+
+		header id: "submission-edit-info"
+			div class: "submission-type"
+				"Submit: "
+				strong "Image"
+
+			div class: "form-actions"
+				" " button "Save" class: "button submit" name: "do" value: "save"
+				" " button "Submit" class: "button submit primary" name: "do" value: "submit"
+
+		div id: "preview"
+
+		section id: "general"
+			h3 "General Data"
+
+			" " label class: "field"
+				span class: "label"
+					"Title"
+
+				" " input
+					type: "text"
+					id: "title-field"
+					name: "title"
+					class: "text"
+					required:
+
+			" " label class: "field"
+				span class: "label"
+					"Description"
+
+				" " textarea
+					name: "description"
+					rows: "7"
+					cols: "80"
+					class: "text"
+
+			div class: "field"
+				span class: "label"
+					"Rating"
+
+				label class: "rating general"
+					input type: "radio" name: "rating" value: "general" required:
+
+					h4 "General"
+
+					p class: "description"
+						span "Content suitable for all ages."
+
+				label class: "rating mature"
+					input type: "radio" name: "rating" value: "mature"
+
+					h4 "Mature"
+
+					p class: "description"
+						span "Containing gore, violence, tasteful/artistic nudity, or general mature themes."
+
+				label class: "rating adult"
+					input type: "radio" name: "rating" value: "adult"
+
+					h4 "Adult"
+
+					p class: "description"
+						span "Sexually explicit imagery, or imagery otherwise geared towards adult audiences."
+
+		section id: "thumbnail"
+			h3 "Thumbnail"
+
+			label class: "file-upload"
+				span class: "label"
+					"Upload custom thumbnail "
+
+				input
+					type: "file"
+					name: "thumbnail"
+
+		section id: "tags"
+			h3 "Tags"
+
+			" " label class: "field"
+				span class: "label"
+					"Applied Tags"
+
+				" " textarea
+					name: "tags"
+					rows: "7"
+					cols: "80"
+					class: "text"
+					placeholder: "Separate tags with a comma (,)."
+
+			if data.commonTags.length
+				div class: "field"
+					span class: "label"
+						"My Tags"
+
+					ul id: "common-tags"
+						for tag of data.commonTags
+							li "#{tag.name}"
+
+		section id: "portfolios"
+			h3 "Portfolios"
+
+		section id: "publishing"
+			h3 "Publishing"
+
+			label class: "option"
+				" " input type: "checkbox" name: "notify" checked:
+
+				div class: "label"
+					h4 "Notify my watchers when I submit this"
+
+			label class: "option"
+				" " input type: "checkbox" name: "browsable" checked:
+
+				div class: "label"
+					h4 "Visible in “Browse”"
+
+			label class: "option"
+				" " input type: "checkbox" name: "gallery" checked:
+
+				div class: "label"
+					h4 "Visible in my gallery"
+
+					p "If unchecked, submission will still be visible in portfolios or when privately linked."
+
+			label class: "option"
+				" " input type: "checkbox" name: "visible_to_non_watchers" checked:
+
+				div class: "label"
+					h4 "Visible to those not watching me"
+
+			label class: "option"
+				" " input type: "checkbox" name: "visible_to_guests" checked:
+
+				div class: "label"
+					h4 "Visible to guests"
+
+			div class: "option"
+				" " input type: "checkbox" name: "use_postdate" id: "use-postdate"
+
+				div class: "label"
+					label for: "use-postdate"
+						h4 "Postdate submission"
+
+						p
+							"Submission will be hidden from others until a certain date. "
+							"Notifications will be sent at the specified date as well."
+
+					input
+						type: "datetime"
+						name: "postdate"
+						class: "text"
+						placeholder: "tomorrow at 5 am pst"
+
+		nav class: "submission-section-tabs"
+			ul
+				li a "General Data" href: "#general"
+				li a "Thumbnail" href: "#thumbnail"
+				li a "Tags" href: "#tags"
+				li a "Portfolios" href: "#portfolios"
+				li a "Publishing" href: "#publishing"
+
+		footer class: "form-actions"
+			" " button "Save" class: "button submit" name: "do" value: "save"
+			" " button "Submit" class: "button submit primary" name: "do" value: "submit"
