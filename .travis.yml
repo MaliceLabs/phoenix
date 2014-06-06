@@ -5,7 +5,7 @@ node_js:
 before_install:
     - npm install eslint
     - sudo apt-get update -qq
-    - sudo apt-get install -y gettext libglib2.0-dev libxml2-dev swig sh pkg-config gtk-doc-tools gobject-introspection automake make
+    - sudo apt-get install -y gettext libglib2.0-dev libxml2-dev swig pkg-config gtk-doc-tools gobject-introspection automake make
     - wget http://www.vips.ecs.soton.ac.uk/supported/current/vips-7.38.5.tar.gz -O /tmp/vips-7.38.5.tar.gz
     - tar -xzvf /tmp/vips-7.38.5.tar.gz
     - cd /tmp/vips-7.38.5 && ./configure && make && sudo make install
