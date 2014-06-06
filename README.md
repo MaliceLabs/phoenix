@@ -1,4 +1,4 @@
-[![Build status][Travis badge]][Build status]
+[![Build Status](https://travis-ci.org/MaliceLabs/phoenix.svg?branch=master)](https://travis-ci.org/MaliceLabs/phoenix)
 
 **Phoenix** is a rewrite of [Fur Affinity] in [Node.js],
 in an attempt to improve security and maintainability. It sports a full
