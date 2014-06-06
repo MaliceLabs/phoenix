@@ -9,7 +9,7 @@ before_install:
     - wget http://www.vips.ecs.soton.ac.uk/supported/current/vips-7.38.5.tar.gz -O /tmp/vips-7.38.5.tar.gz
     - cd /tmp/ && tar -xzvf /tmp/vips-7.38.5.tar.gz
     - cd /tmp/vips-7.38.5 && ./configure && make && sudo make install
-    - cd ~/MaliceLabs/phoenix/
+    - cd /home/travis/build/MaliceLabs/phoenix/
 
 script:
     - node node_modules/eslint/bin/eslint.js .
