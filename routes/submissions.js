@@ -14,6 +14,8 @@ router.get('/new', promiseResponse.html(function (request) {
 	return submissions.uploadForm(request);
 }));
 
-router.post('/', promiseResponse.html(submissions.upload));
+router.post('/', promiseResponse.html(submissions.create));
+
+router.post('/media/', promiseResponse.html(submissions.upload));
 
 module.exports = router;
