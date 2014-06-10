@@ -22,7 +22,7 @@ replace content
 
 					"#{new ByteSize(item.file_size).toString(1)}"
 
-	form method: "POST" action: "/submissions/" enctype: "multipart/form-data"
+	form method: "POST" action: "/submissions/media/" enctype: "multipart/form-data"
 		% csrf();
 
 		" " label class: "file-upload"

@@ -1,7 +1,27 @@
 'use strict';
 
 var Promise = require('promise');
+var unorm = require('unorm');
 var db = require('../lib/db');
+
+function byName(name, preNormalized) {
+	if (!preNormalized) {
+		name = unorm.nfc(name.toLowerCase().trim());
+	}
+
+	return db.query('INSERT INTO tags (name) VALUES ($1) RETURNING id', [name]).then(
+		function (result) {
+			return result.rows[0].id;
+		},
+		function (error) {
+			return db.query('SELECT id FROM tags WHERE name = $1', [name]).then(function (result) {
+				var tag = result.rows[0];
+
+				return tag ? tag.id : Promise.reject(error);
+			});
+		}
+	);
+}
 
 function mostCommonTagsFor(user) {
 	return db.query(
@@ -25,5 +45,6 @@ function mostCommonTagsForRequester(request) {
 	});
 }
 
+exports.byName = byName;
 exports.mostCommonTagsFor = mostCommonTagsFor;
 exports.mostCommonTagsForRequester = mostCommonTagsForRequester;

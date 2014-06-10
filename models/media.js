@@ -5,6 +5,7 @@ var crypto = require('crypto');
 var stream = require('stream');
 var fs = require('fs');
 var path = require('path');
+var sharp = require('sharp');
 var db = require('../lib/db');
 var config = require('../config');
 
@@ -15,6 +16,14 @@ function const_(obj) {
 	return function () {
 		return obj;
 	};
+}
+
+function autoThumbnail(imageBuffer) {
+	return sharp(imageBuffer).resize(300, 300).max().png();
+}
+
+function associateWithSubmission(mediaId, submissionId) {
+	return db.query('INSERT INTO submission_media (media, submission) VALUES ($1, $2)', [mediaId, submissionId]);
 }
 
 function createUploadStream() {
@@ -89,6 +98,15 @@ function associate(user, mediaId, filename) {
 		.then(mediaId_, mediaId_);
 }
 
+function owns(user, mediaId) {
+	return db.query(
+		'SELECT COUNT(*)::int AS count FROM user_media WHERE user_media.owner = $1 AND user_media.media = $2',
+		[user.id, mediaId]
+	).then(function (result) {
+		return result.rows[0].count === 1;
+	});
+}
+
 function listFor(user) {
 	return db.query(
 		'SELECT media.id, media.hash, media.type, media.file_size, media.width, media.height, user_media.media, user_media.name FROM media INNER JOIN user_media ON media.id = user_media.media WHERE user_media.owner = $1',
@@ -108,7 +126,10 @@ function listForRequester(request) {
 	});
 }
 
+exports.autoThumbnail = autoThumbnail;
 exports.createUploadStream = createUploadStream;
 exports.associate = associate;
+exports.associateWithSubmission = associateWithSubmission;
+exports.owns = owns;
 exports.listFor = listFor;
 exports.listForRequester = listForRequester;

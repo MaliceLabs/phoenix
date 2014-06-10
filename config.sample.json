@@ -5,6 +5,7 @@
 		"userMaxAge": "3 months"
 	},
 	"maximumFormSize": "1 MiB",
+	"maximumThumbnailSize": "4 MiB",
 	"password": {
 		"bcryptRounds": 12
 	},
